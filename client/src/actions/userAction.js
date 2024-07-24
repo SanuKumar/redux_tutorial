@@ -29,11 +29,6 @@ export const viewUser = async (dispatch, id) => {
     dispatch({
       type: "VIEW_USER_REQUEST",
     });
-    // const [user, img] = await Promise.all([
-    //   axios.get(`https://jsonplaceholder.typicode.com/users/${id}`),
-    //   axios.get(`https://robohash.org/${id}`),
-    // ]);
-    // user.data.img = img.config.url;
     const user = await axios.get(`http://localhost:5001/api/users/${id}`);
     dispatch({
       type: "VIEW_USER",

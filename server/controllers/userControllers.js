@@ -14,7 +14,6 @@ const getUserProfile = asyncHandler(async (req, res) => {
     axios.get(`https://robohash.org/${id}`),
   ]);
   user.data.img = img.config.url;
-  // user.data.img = img.config.url;
   res.json(user.data);
 });
 
