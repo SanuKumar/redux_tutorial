@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
 import { Suspense } from "react";
-import { useTranslation } from "react-i18next";
 
 import LandingPage from "./pages/LandingPage";
 import UserPage from "./pages/UserPage";
@@ -11,7 +10,6 @@ import LoginSignup from "./pages/LoginSignup";
 import Loader from "./components/Loader";
 
 function App() {
-  const { t } = useTranslation();
   return (
     <Suspense
       fallback={
@@ -20,14 +18,10 @@ function App() {
         </div>
       }
     >
-      <Home />
+      <Main />
     </Suspense>
   );
 }
-
-const Home = (props) => {
-  return <Main />;
-};
 
 const Main = () => {
   return (
@@ -58,10 +52,10 @@ const Main = () => {
       >
         <Header />
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/users" element={<UserDashboard />} />
-          <Route path="users/:id" element={<UserPage />} />
-          <Route path="/login-signup" element={<LoginSignup />} />
+          <Route path='/' element={<LandingPage />} />
+          <Route path='/users' element={<UserDashboard />} />
+          <Route path='users/:id' element={<UserPage />} />
+          <Route path='/login-signup' element={<LoginSignup />} />
         </Routes>
       </ErrorBoundary>
     </>

@@ -17,8 +17,6 @@ const UserDashboard = () => {
     navigate(`/users/${id}`);
   };
 
-  console.log(users);
-
   return (
     <>
       <div>UserDashboard</div>
@@ -28,18 +26,18 @@ const UserDashboard = () => {
       ) : loading ? (
         <Loader />
       ) : (
-        <div className="card-wrapper">
+        <div className='card-wrapper'>
           {users &&
             users.length > 0 &&
             users.map((user) => (
               <div
-                className="userCard"
+                className='userCard'
                 key={user.id}
                 onClick={() => handleViewUser(user.id)}
               >
                 <img
                   src={`https://robohash.org/${user.name}`}
-                  alt="user"
+                  alt='user'
                   height={50}
                   width={50}
                 />

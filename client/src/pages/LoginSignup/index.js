@@ -1,26 +1,32 @@
-import React from "react";
 import { Formik } from "formik";
-import * as Yup from "yup";
+import * as yup from "yup";
 
-const Login = () => {
-  const initialValues = {
-    name: "",
+import "./loginSignup.css";
+
+const LoginSignup = () => {
+  const initialFormValue = {
     email: "",
     password: "",
-    userName: "",
-    phoneNumber: "",
   };
 
-  async function onSubmit(values, { setSubmitting }) {
-    console.log(values);
-    setSubmitting(false);
-  }
+  const SignupSchema = yup.object({
+    email: yup.string().email("Invalid email").required("Email is required"),
+    password: yup
+      .string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Password is required"),
+  });
+
   return (
     <>
       <div>Login</div>
       <Formik
-        onSubmit={onSubmit}
-        initialValues={initialValues}
+        initialValues={initialFormValue}
+        validationSchema={SignupSchema}
+        onSubmit={async (data) => {
+          console.log(data);
+        }}
         enableReinitialize={true}
       >
         {({
@@ -32,32 +38,34 @@ const Login = () => {
           handleSubmit,
           isSubmitting,
         }) => {
-          console.log(values);
+          console.log(errors);
           return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} autoComplete='off'>
               <div>
                 <label>Email</label>
                 <input
-                  type="email"
-                  name="email"
+                  type='text'
+                  name='email'
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                  placeholder="Enter you mail id"
+                  placeholder='Enter your email'
                 />
+                {errors.email && <span>{errors.email}</span>}
               </div>
               <div>
                 <label>Password</label>
                 <input
-                  type="password"
-                  name="password"
+                  type='password'
+                  name='password'
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
-                  placeholder="Enter your password"
+                  placeholder='Enter your password'
                 />
+                {errors.password && <span>{errors.password}</span>}
               </div>
-              <button type="submit" disabled={isSubmitting}>
+              <button type='submit' disabled={isSubmitting}>
                 Submit
               </button>
             </form>
@@ -68,4 +76,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginSignup;

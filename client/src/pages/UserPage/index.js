@@ -27,13 +27,27 @@ const UserPage = () => {
       ) : (
         user && (
           <>
-            <div className="user-card">
-              <img src={user.img} alt="user" />
-              <div> {user.name}</div>
-              <div> {user.email}</div>
-              <div> {user.phone}</div>
-              <div>{user.username}</div>
-              <div>{user.website}</div>
+            <div className='user-card'>
+              <div>
+                <img src={user.img} alt='user' />
+              </div>
+              <div>
+                <span style={{ fontWeight: "bold" }}>Name:</span> {user.name}
+              </div>
+              <div>
+                <span style={{ fontWeight: "bold" }}>Email:</span> {user.email}
+              </div>
+              <div>
+                <span style={{ fontWeight: "bold" }}>Phone:</span> {user.phone}
+              </div>
+              <div>
+                <span style={{ fontWeight: "bold" }}>Username:</span>{" "}
+                {user.username}
+              </div>
+              <div>
+                <span style={{ fontWeight: "bold" }}>Website:</span>{" "}
+                {user.website}
+              </div>
             </div>
           </>
         )

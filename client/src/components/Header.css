@@ -22,3 +22,8 @@
   font-family: Cambria, serif;
   flex-direction: column-reverse;
 }
+
+.lng-selector {
+  position: absolute;
+  top: 0;
+}

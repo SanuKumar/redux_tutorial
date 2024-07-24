@@ -1,45 +1,49 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Header.css";
+
+import { useTranslation } from "react-i18next";
 
 import LanguageSelector from "./languageSelector";
 
 const Header = () => {
+  const { t } = useTranslation();
   const handleLogin = () => {};
   return (
     <>
-      <div className="headerWrapper">
-        <nav id="sidebar">
+      <div className='headerWrapper'>
+        <nav id='sidebar'>
           <NavLink
             exact
-            to="/"
+            to='/'
             style={{ textDecoration: "none" }}
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "active" : ""
             }
           >
-            Home
+            {t("Home")}
           </NavLink>
 
           <NavLink
             exact
-            to="/users"
+            to='/users'
             style={{ textDecoration: "none" }}
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "active" : ""
             }
           >
-            User
+            {t("User")}
           </NavLink>
           <NavLink
             exact
-            to="/login-signup"
+            to='/login-signup'
             style={{ textDecoration: "none" }}
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "active" : ""
             }
+            onClick={handleLogin}
           >
-            Login
+            {t("Login")}
           </NavLink>
           <LanguageSelector />
         </nav>

@@ -17,4 +17,8 @@ const getUserProfile = asyncHandler(async (req, res) => {
   res.json(user.data);
 });
 
+const authUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+});
+
 module.exports = { getUsers, getUserProfile };

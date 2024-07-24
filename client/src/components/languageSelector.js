@@ -20,13 +20,17 @@ const LanguageSelector = () => {
   }, [i18n, i18n.language]);
 
   return (
-    <div style={{ margin: "3rem" }}>
+    <select
+      name='selectLng'
+      onChange={(e) => changeLanguage(e.target.value)}
+      defaultValue={localStorage.getItem("i18nextLng")}
+    >
       {languages.map((lng) => (
-        <button key={lng.code} onClick={() => changeLanguage(lng.code)}>
+        <option key={lng.code} value={lng.code}>
           {lng.name}
-        </button>
+        </option>
       ))}
-    </div>
+    </select>
   );
 };
 
