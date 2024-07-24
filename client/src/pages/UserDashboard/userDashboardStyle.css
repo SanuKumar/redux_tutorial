@@ -1,0 +1,15 @@
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.userCard {
+  height: 8rem;
+  width: 10rem;
+  background-color: bisque;
+  padding: 0 2rem;
+  margin: 1rem;
+  cursor: pointer;
+}

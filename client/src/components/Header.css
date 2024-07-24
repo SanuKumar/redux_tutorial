@@ -1,0 +1,24 @@
+.headerWrapper {
+  width: 100%;
+  background-color: rgb(107, 118, 122);
+  height: 2rem;
+  display: flex;
+  color: white;
+}
+
+#sidebar a.active {
+  color: rebeccapurple;
+}
+
+#sidebar a {
+  color: white;
+  padding: 0 3rem;
+  font-family: Cambria, serif;
+  font-size: 1.5rem;
+}
+
+.login-div {
+  font-size: 1.5rem;
+  font-family: Cambria, serif;
+  flex-direction: column-reverse;
+}
