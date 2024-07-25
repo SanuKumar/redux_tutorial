@@ -4,6 +4,7 @@
   height: 2rem;
   display: flex;
   color: white;
+  align-items: center;
 }
 
 #sidebar a.active {
@@ -12,9 +13,11 @@
 
 #sidebar a {
   color: white;
-  padding: 0 3rem;
+  padding: 0 1rem;
   font-family: Cambria, serif;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  display: inline-flex;
+  width: 5rem;
 }
 
 .login-div {

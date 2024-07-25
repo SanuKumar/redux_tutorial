@@ -1,9 +1,12 @@
 import { Formik } from "formik";
 import * as yup from "yup";
+import { useDispatch } from "react-redux";
+import { authUser } from "../../actions/userAction";
 
 import "./loginSignup.css";
 
 const LoginSignup = () => {
+  const dispatch = useDispatch();
   const initialFormValue = {
     email: "",
     password: "",
@@ -26,6 +29,7 @@ const LoginSignup = () => {
         validationSchema={SignupSchema}
         onSubmit={async (data) => {
           console.log(data);
+          authUser(dispatch, data);
         }}
         enableReinitialize={true}
       >
@@ -40,32 +44,32 @@ const LoginSignup = () => {
         }) => {
           console.log(errors);
           return (
-            <form onSubmit={handleSubmit} autoComplete='off'>
+            <form onSubmit={handleSubmit} autoComplete="off">
               <div>
                 <label>Email</label>
                 <input
-                  type='text'
-                  name='email'
+                  type="text"
+                  name="email"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                  placeholder='Enter your email'
+                  placeholder="Enter your email"
                 />
                 {errors.email && <span>{errors.email}</span>}
               </div>
               <div>
                 <label>Password</label>
                 <input
-                  type='password'
-                  name='password'
+                  type="password"
+                  name="password"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
-                  placeholder='Enter your password'
+                  placeholder="Enter your password"
                 />
                 {errors.password && <span>{errors.password}</span>}
               </div>
-              <button type='submit' disabled={isSubmitting}>
+              <button type="submit" disabled={isSubmitting}>
                 Submit
               </button>
             </form>

@@ -11,11 +11,10 @@ const Header = () => {
   const handleLogin = () => {};
   return (
     <>
-      <div className='headerWrapper'>
-        <nav id='sidebar'>
+      <div className="headerWrapper">
+        <nav id="sidebar">
           <NavLink
-            exact
-            to='/'
+            to="/"
             style={{ textDecoration: "none" }}
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "active" : ""
@@ -25,8 +24,7 @@ const Header = () => {
           </NavLink>
 
           <NavLink
-            exact
-            to='/users'
+            to="/users"
             style={{ textDecoration: "none" }}
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "active" : ""
@@ -35,8 +33,7 @@ const Header = () => {
             {t("User")}
           </NavLink>
           <NavLink
-            exact
-            to='/login-signup'
+            to="/login-signup"
             style={{ textDecoration: "none" }}
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "active" : ""

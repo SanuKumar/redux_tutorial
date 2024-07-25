@@ -3,7 +3,7 @@ import { composeWithDevTools } from "@redux-devtools/extension";
 import { thunk } from "redux-thunk";
 import { userListReducer, viewUserReducer } from "../reducers/userReducer";
 
-const initialState = { value: 0 };
+const initialState = { userList: [], viewUser: {} };
 const reducer = combineReducers({
   userList: userListReducer,
   viewUser: viewUserReducer,

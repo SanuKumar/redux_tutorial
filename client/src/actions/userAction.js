@@ -1,13 +1,11 @@
 import axios from "axios";
 
-export const fetchUser = async (dispatch) => {
+const fetchUser = async (dispatch) => {
   try {
     dispatch({
       type: "FETCH_USER_REQUEST",
     });
-    const [user] = await Promise.all([
-      axios.get(`http://localhost:5001/api/users`),
-    ]);
+    const [user] = await Promise.all([axios.get(`/api/users`)]);
     setTimeout(
       () =>
         dispatch({
@@ -24,12 +22,12 @@ export const fetchUser = async (dispatch) => {
   }
 };
 
-export const viewUser = async (dispatch, id) => {
+const viewUser = async (dispatch, id) => {
   try {
     dispatch({
       type: "VIEW_USER_REQUEST",
     });
-    const user = await axios.get(`http://localhost:5001/api/users/${id}`);
+    const user = await axios.get(`/api/users/${id}`);
     dispatch({
       type: "VIEW_USER",
       payload: user.data,
@@ -41,3 +39,18 @@ export const viewUser = async (dispatch, id) => {
     });
   }
 };
+
+const authUser = async (dispatch, user) => {
+  const { email, password } = user;
+  console.log(user);
+  const findUser = await axios.post(`/api/users/login`, user);
+  console.log(findUser.data)
+  if (findUser) {
+    dispatch({
+      type: "AUTH_USER",
+      payload: findUser.data,
+    });
+  }
+};
+
+export { fetchUser, viewUser, authUser };

@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import UserDashboard from "./pages/UserDashboard";
 import LoginSignup from "./pages/LoginSignup";
 import Loader from "./components/Loader";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -52,10 +53,11 @@ const Main = () => {
       >
         <Header />
         <Routes>
-          <Route path='/' element={<LandingPage />} />
-          <Route path='/users' element={<UserDashboard />} />
-          <Route path='users/:id' element={<UserPage />} />
-          <Route path='/login-signup' element={<LoginSignup />} />
+          <Route exact path="/" element={<LandingPage />} />
+          <Route exact path="/users" element={<UserDashboard />} />
+          <Route exact path="users/:id" element={<UserPage />} />
+          <Route exact path="/login-signup" element={<LoginSignup />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </ErrorBoundary>
     </>

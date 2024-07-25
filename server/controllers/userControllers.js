@@ -19,6 +19,14 @@ const getUserProfile = asyncHandler(async (req, res) => {
 
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
+  console.log(email, password);
+  const users = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+  users.data = users.data.filter((user) => user.email === email);
+  if (users.data.length === 0) {
+    res.status(401);
+    throw new Error("Invalid email or password");
+  }
+  res.json(users.data[0]);
 });
 
-module.exports = { getUsers, getUserProfile };
+module.exports = { getUsers, getUserProfile, authUser };

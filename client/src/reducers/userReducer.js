@@ -23,3 +23,16 @@ export const viewUserReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export const authUserReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "AUTH_USER_REQUEST":
+      return { loading: true, user: {} };
+    case "AUTH_USER":
+      return { loading: false, user: action.payload };
+    case "AUTH_USER_ERROR":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
