@@ -8,15 +8,22 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import "./i18n.js";
 
+import { PersistGate } from "redux-persist/es/integration/react";
+import { persistStore } from "redux-persist";
+
 // redux tutorial
 // https://www.youtube.com/watch?v=dOkkHHuFxjM
+
+let persistor = persistStore(store);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
     </BrowserRouter>
   </Provider>
   // </React.StrictMode>

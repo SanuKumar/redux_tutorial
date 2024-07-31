@@ -1,12 +1,14 @@
 import { Formik } from "formik";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
-import { authUser } from "../../actions/userAction";
+import { useDispatch, useSelector } from "react-redux";
+import { authUser, viewUser } from "../../actions/userAction";
 
 import "./loginSignup.css";
+import { useNavigate } from "react-router-dom";
 
 const LoginSignup = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const initialFormValue = {
     email: "",
     password: "",
@@ -28,8 +30,9 @@ const LoginSignup = () => {
         initialValues={initialFormValue}
         validationSchema={SignupSchema}
         onSubmit={async (data) => {
-          console.log(data);
-          authUser(dispatch, data);
+          authUser(dispatch, data).then((user) => {
+            navigate(`/users/${user[0].id}`);
+          });
         }}
         enableReinitialize={true}
       >
@@ -44,32 +47,32 @@ const LoginSignup = () => {
         }) => {
           console.log(errors);
           return (
-            <form onSubmit={handleSubmit} autoComplete="off">
+            <form onSubmit={handleSubmit} autoComplete='off'>
               <div>
                 <label>Email</label>
                 <input
-                  type="text"
-                  name="email"
+                  type='text'
+                  name='email'
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                  placeholder="Enter your email"
+                  placeholder='Enter your email'
                 />
                 {errors.email && <span>{errors.email}</span>}
               </div>
               <div>
                 <label>Password</label>
                 <input
-                  type="password"
-                  name="password"
+                  type='password'
+                  name='password'
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
-                  placeholder="Enter your password"
+                  placeholder='Enter your password'
                 />
                 {errors.password && <span>{errors.password}</span>}
               </div>
-              <button type="submit" disabled={isSubmitting}>
+              <button type='submit' disabled={isSubmitting}>
                 Submit
               </button>
             </form>

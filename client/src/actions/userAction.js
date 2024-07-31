@@ -23,6 +23,7 @@ const fetchUser = async (dispatch) => {
 };
 
 const viewUser = async (dispatch, id) => {
+  console.log(id);
   try {
     dispatch({
       type: "VIEW_USER_REQUEST",
@@ -41,16 +42,14 @@ const viewUser = async (dispatch, id) => {
 };
 
 const authUser = async (dispatch, user) => {
-  const { email, password } = user;
-  console.log(user);
   const findUser = await axios.post(`/api/users/login`, user);
-  console.log(findUser.data)
   if (findUser) {
     dispatch({
       type: "AUTH_USER",
       payload: findUser.data,
     });
   }
+  return findUser.data;
 };
 
 export { fetchUser, viewUser, authUser };
