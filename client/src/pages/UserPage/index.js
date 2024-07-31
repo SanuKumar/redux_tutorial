@@ -12,7 +12,7 @@ const UserPage = () => {
   const { user, loading, error } = useSelector((state) => state.viewUser);
 
   useEffect(() => {
-    viewUser(dispatch, id);
+    dispatch(viewUser(id));
   }, []);
   return (
     <>

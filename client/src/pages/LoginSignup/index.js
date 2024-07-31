@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import * as yup from "yup";
-import { useDispatch, useSelector } from "react-redux";
-import { authUser, viewUser } from "../../actions/userAction";
+import { useDispatch } from "react-redux";
+import { authUser } from "../../actions/userAction";
 
 import "./loginSignup.css";
 import { useNavigate } from "react-router-dom";
@@ -30,9 +30,15 @@ const LoginSignup = () => {
         initialValues={initialFormValue}
         validationSchema={SignupSchema}
         onSubmit={async (data) => {
-          authUser(dispatch, data).then((user) => {
-            navigate(`/users/${user[0].id}`);
-          });
+          let user = await dispatch(authUser(data));
+          try {
+            if (user) {
+              console.log(user);
+              navigate(`/users/${user[0].id}`);
+            }
+          } catch (error) {
+            console.log(error);
+          }
         }}
         enableReinitialize={true}
       >

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const fetchUser = async (dispatch) => {
+const fetchUser = () => async (dispatch) => {
   try {
     dispatch({
       type: "FETCH_USER_REQUEST",
@@ -22,7 +22,7 @@ const fetchUser = async (dispatch) => {
   }
 };
 
-const viewUser = async (dispatch, id) => {
+const viewUser = (id) => async (dispatch) => {
   console.log(id);
   try {
     dispatch({
@@ -41,7 +41,7 @@ const viewUser = async (dispatch, id) => {
   }
 };
 
-const authUser = async (dispatch, user) => {
+const authUser = (user) => async (dispatch) => {
   const findUser = await axios.post(`/api/users/login`, user);
   if (findUser) {
     dispatch({

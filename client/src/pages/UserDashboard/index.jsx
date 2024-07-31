@@ -10,7 +10,7 @@ const UserDashboard = () => {
   const dispatch = useDispatch();
   const { users, loading, error } = useSelector((state) => state.userList);
   useEffect(() => {
-    fetchUser(dispatch);
+    dispatch(fetchUser);
   }, []);
 
   const handleViewUser = (id) => {
@@ -26,18 +26,18 @@ const UserDashboard = () => {
       ) : loading ? (
         <Loader />
       ) : (
-        <div className="card-wrapper">
+        <div className='card-wrapper'>
           {users &&
             users.length > 0 &&
             users.map((user) => (
               <div
-                className="userCard"
+                className='userCard'
                 key={user.id}
                 onClick={() => handleViewUser(user.id)}
               >
                 <img
                   src={`https://robohash.org/${user.name}`}
-                  alt="user"
+                  alt='user'
                   height={50}
                   width={50}
                 />

@@ -1,7 +1,7 @@
 import { store } from "../store";
 
-export const incAction = (dispatch) => {
-  const { data } = store.getState().counter;
+export const incAction = () => async (dispatch) => {
+  const { data } = await store.getState().counter;
   try {
     dispatch({
       type: "ADD",
@@ -15,8 +15,8 @@ export const incAction = (dispatch) => {
   }
 };
 
-export const decAction = (dispatch) => {
-  const { data } = store.getState().counter;
+export const decAction = () => async (dispatch) => {
+  const { data } = await store.getState().counter;
   try {
     dispatch({
       type: "SUB",
