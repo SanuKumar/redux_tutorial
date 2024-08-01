@@ -13,7 +13,7 @@ const UserPage = () => {
 
   useEffect(() => {
     dispatch(viewUser(id));
-  }, []);
+  }, [dispatch, id]);
   return (
     <>
       <h2>User Details</h2>
