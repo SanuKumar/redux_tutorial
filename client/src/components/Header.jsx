@@ -1,9 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
-
 import { useTranslation } from "react-i18next";
-
 import LanguageSelector from "./languageSelector";
 
 const Header = () => {
@@ -11,10 +9,10 @@ const Header = () => {
   const handleLogin = () => {};
   return (
     <>
-      <div className="headerWrapper">
-        <nav id="sidebar">
+      <div className='headerWrapper'>
+        <nav id='sidebar'>
           <NavLink
-            to="/"
+            to='/'
             style={{ textDecoration: "none" }}
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "active" : ""
@@ -24,7 +22,7 @@ const Header = () => {
           </NavLink>
 
           <NavLink
-            to="/users"
+            to='/users'
             style={{ textDecoration: "none" }}
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "active" : ""
@@ -33,7 +31,7 @@ const Header = () => {
             {t("User")}
           </NavLink>
           <NavLink
-            to="/login-signup"
+            to='/login-signup'
             style={{ textDecoration: "none" }}
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "active" : ""

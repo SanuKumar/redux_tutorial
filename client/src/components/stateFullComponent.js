@@ -29,11 +29,11 @@ class StateFullComponent extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("shouldComponentUpdate");
-    console.log(nextProps, nextState);
-    if (this.props.value !== nextProps.value) {
-      return true;
-    }
+    // console.log("shouldComponentUpdate");
+    // console.log(nextProps, nextState);
+    // if (this.props.value !== nextProps.value) {
+    //   return true;
+    // }
     return false;
   }
 

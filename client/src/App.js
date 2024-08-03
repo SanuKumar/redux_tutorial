@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
-import { Suspense } from "react";
+import { createContext, Suspense, useState } from "react";
 
 import LandingPage from "./pages/LandingPage";
 import UserPage from "./pages/UserPage";
@@ -24,7 +24,19 @@ function App() {
   );
 }
 
+export const LogInContext = createContext();
+
 const Main = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
   return (
     <>
       <ErrorBoundary
@@ -51,14 +63,18 @@ const Main = () => {
           console.log("Error Boundry Reset");
         }}
       >
-        <Header />
-        <Routes>
-          <Route exact path="/" element={<LandingPage />} />
-          <Route exact path="/users" element={<UserDashboard />} />
-          <Route exact path="users/:id" element={<UserPage />} />
-          <Route exact path="/login-signup" element={<LoginSignup />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
+        <LogInContext.Provider
+          value={{ isLoggedIn, onLogin: handleLogin, onLogout: handleLogout }}
+        >
+          <Header />
+          <Routes>
+            <Route exact path='/' element={<LandingPage />} />
+            <Route exact path='/users' element={<UserDashboard />} />
+            <Route exact path='users/:id' element={<UserPage />} />
+            <Route exact path='/login-signup' element={<LoginSignup />} />
+            <Route path='*' element={<ErrorPage />} />
+          </Routes>
+        </LogInContext.Provider>
       </ErrorBoundary>
     </>
   );
