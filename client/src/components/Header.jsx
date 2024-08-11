@@ -31,6 +31,15 @@ const Header = () => {
             {t("User")}
           </NavLink>
           <NavLink
+            to='/post'
+            style={{ textDecoration: "none" }}
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active" : ""
+            }
+          >
+            {t("Post")}
+          </NavLink>
+          <NavLink
             to='/login-signup'
             style={{ textDecoration: "none" }}
             className={({ isActive, isPending }) =>

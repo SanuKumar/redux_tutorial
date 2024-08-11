@@ -37,13 +37,13 @@ class StateFullComponent extends Component {
     return false;
   }
 
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log("getSnapshotBeforeUpdate");
-    console.log("prevProps/prevState", prevProps, prevState);
-    document.getElementById("new").innerHTML =
-      "Current Name: " + this.state.fname;
-    return prevState;
-  }
+  // getSnapshotBeforeUpdate(prevProps, prevState) {
+  //   console.log("getSnapshotBeforeUpdate");
+  //   console.log("prevProps/prevState", prevProps, prevState);
+  //   document.getElementById("new").innerHTML =
+  //     "Current Name: " + this.state.fname;
+  //   return prevState;
+  // }
 
   render() {
     console.log("render");

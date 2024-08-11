@@ -9,6 +9,8 @@ import UserDashboard from "./pages/UserDashboard";
 import LoginSignup from "./pages/LoginSignup";
 import Loader from "./components/Loader";
 import ErrorPage from "./pages/ErrorPage";
+import Post from "./pages/Post";
+import "./App.css";
 
 function App() {
   return (
@@ -72,6 +74,7 @@ const Main = () => {
             <Route exact path='/users' element={<UserDashboard />} />
             <Route exact path='users/:id' element={<UserPage />} />
             <Route exact path='/login-signup' element={<LoginSignup />} />
+            <Route exact path={"/post"} element={<Post />} />
             <Route path='*' element={<ErrorPage />} />
           </Routes>
         </LogInContext.Provider>

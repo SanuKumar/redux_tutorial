@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { incAction, decAction } from "../../actions/counterAction";
 import { StateFullComponent } from "../../components/stateFullComponent";
-import FetchPost from "../../components/FetchPost";
 import LoginContext from "../../components/LoginContext";
+import styles from "./landing.module.css";
 
 const LandingPage = () => {
   const [toggle, setToggle] = useState(false);
@@ -29,13 +29,49 @@ const LandingPage = () => {
   //   });
   // }, []);
 
+  useLayoutEffect(() => {
+    console.log("useLauoyt Effect");
+  }, []);
+
+  useEffect(() => {
+    console.log("use Effect");
+  }, []);
+
+  useMemo(() => {
+    console.log("Memo");
+  }, []);
+
+  window.addEventListener("DOMContentLoaded", (event) => {
+    console.log("DOM fully loaded and parsed");
+  });
+
+  const log = document.querySelector(".event-log-contents");
+  window.addEventListener("load", (event) => {
+    // log.textContent += "load\n";
+    console.log("load");
+  });
+
+  function doSomething() {
+    console.info("DOM loaded");
+  }
+
+  if (document.readyState === "loading") {
+    // Loading hasn't finished yet
+    document.addEventListener("DOMContentLoaded", doSomething);
+  } else {
+    // `DOMContentLoaded` has already fired
+    doSomething();
+  }
+
   const [stateComponentName, setStateComponentName] = useState("");
 
   return (
     <>
-      <div>LandingPage</div>
+      <div style={{ color: "pink" }} className='class-color' id='id-color'>
+        LandingPage
+      </div>
       <div style={{ padding: "2px" }}>{t("Welcome to React")}</div>
-      <h3>Counter</h3>
+      <h3 className={styles.divFontSize}>Counter</h3>
       <div style={{ display: "flex", justifyContent: "center" }}>
         {load ? (
           "Loading..."
@@ -62,8 +98,6 @@ const LandingPage = () => {
         <StateFullComponent defaultName={stateComponentName} />
       </div>
       <LoginContext />
-      <br />
-      <FetchPost />
     </>
   );
 };
