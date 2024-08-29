@@ -10,7 +10,7 @@ const UserDashboard = () => {
   const dispatch = useDispatch();
   const { users, loading, error } = useSelector((state) => state.userList);
   useEffect(() => {
-    dispatch(fetchUser);
+    dispatch(fetchUser());
   }, []);
 
   const handleViewUser = (id) => {
